@@ -154,6 +154,15 @@ const mapDatabaseRowToFrontend = async (row) => {
     };
 };
 
+// Health Check Endpoint (for keeping Render service alive)
+app.get('/health', (req, res) => {
+    res.status(200).json({ 
+        status: 'ok', 
+        timestamp: new Date().toISOString(),
+        message: 'Service is running' 
+    });
+});
+
 // API: Get All Evaluations (List View)
 app.get('/api/evaluations', async (req, res) => {
     try {
